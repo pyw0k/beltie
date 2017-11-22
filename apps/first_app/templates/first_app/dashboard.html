@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+</head>
+<body>
+<h1>Hello, {{user.name}}!</h1>
+<a href="/logout">Logout</a>
+<p>Your Wish List:</p>
+<div class='container'>
+	<table>
+		<thead>
+			<th>Item</th>
+			<th>Added By</th>
+			<th>Date Added</th>
+			<th>Action</th>
+		</thead>
+		<tbody>
+			{% for wish in mywishes%}
+			<tr>
+				<td><a href="/wish_item/{{wish.id}}">{{wish.product}}</a></td>
+				<td>{{wish.wisher.name}}</td>
+				<td>{{wish.created_at}}</td>
+				<td><a href="/remove/{{wish.id}}">Remove from my Wishlist</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<h2>Other User's Wish List:</h2>
+<div class='container'>
+	<table>
+		<thead>
+			<th>Item</th>
+			<th>Added By</th>
+			<th>Date Added</th>
+			<th>Action</th>
+		</thead>
+		<tbody>
+			{% for wish in wishes %}
+			<tr>
+				<td><a href="/wish_item/{{wish.id}}">{{wish.product}}</a></td>
+				<td>{{wish.wisher.name}}</td>
+				<td>{{wish.created_at}}</td>
+				<td><a href="/addwish/{{wish.id}}">Add to my Wishlist</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<a href="wish_item/add">Add Item</a>
+</body>
+</html>

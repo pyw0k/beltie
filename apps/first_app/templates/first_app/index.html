@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% if messages %}
+	<div class='messages'>
+		{% for message in messages %}
+		<p>{{ message }}</p>
+		{% endfor %}
+	</div>
+	{% endif %}
+	<h2>Registration</h2>
+	<form action='/register' method='post'>
+		{% csrf_token %}
+		<div class='formgroup'>
+			<label for='name'>Name</label>
+			<input type='text' name='name'>
+		</div>
+		<div class='formgroup'>
+			<label for='username'>Username</label>
+			<input type='text' name='username'>
+		</div>
+		<div class='formgroup'>
+			<label for='email'>Email</label>
+			<input type='email' name='email'>
+		</div>
+		<div class='formgroup'>
+			<label for='password'>Password</label>
+			<input type='password' name='password'>
+		</div>
+		<div class='formgroup'>
+			<label for='password_confirm'>Password Confirm</label>
+			<input type='password' name='password_confirm'>
+		</div>
+	<div class='formgroup'>
+		<label for='datehired'>Date Hired</label>
+		<input type='date' name='datehired'>
+	</div>
+		<input type='submit' value='Register'>
+	</form>
+	<h2>Login</h2>
+	<form action="/login" method='post'>
+	{% csrf_token %}
+	<div class='formgroup'>
+		<label for='email'>Email</label>
+		<input type='email' name='email'>
+	</div>
+	<div class='formgroup'>
+		<label for='password'>Password</label>
+		<input type='password' name='password'>
+	</div>
+	<input type="submit" value="Login">
+</form>
+</body>
+</html>
